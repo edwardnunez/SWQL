@@ -1,0 +1,14 @@
+Model [queries: 1]
+	#0 SimpleQuery
+		Or
+		{
+			Or
+			{
+				Not
+					SimpleSearch [query: aa]
+				Not
+					SimpleSearch [query: bb]
+			}
+			Not
+				SimpleSearch [query: cc]
+		}

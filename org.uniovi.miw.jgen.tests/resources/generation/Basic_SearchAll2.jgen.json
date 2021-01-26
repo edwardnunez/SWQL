@@ -1,0 +1,35 @@
+{
+  "queryNumber": 4,
+  "queries": [
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "ALL",
+        "isLogical": false
+      }
+    },
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "ALL",
+        "isLogical": false
+      }
+    },
+    {
+      "type": "UserQuery",
+      "expression": {
+        "type": "SIMPLE",
+        "isLogical": false,
+        "text": "jose"
+      }
+    },
+    {
+      "type": "CommentsQuery",
+      "id": "0001"
+    }
+  ],
+  "platforms": [
+    "twitter",
+    "facebook"
+  ]
+}

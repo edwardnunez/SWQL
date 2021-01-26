@@ -1,0 +1,19 @@
+Model [queries: 1]
+	#0 SimpleQuery
+		And
+		{
+			And
+			{
+				And
+				{
+					And
+					{
+						SimpleSearch [query: aa]
+						SimpleSearch [query: bb]
+					}
+					SimpleSearch [query: cc]
+				}
+				SimpleSearch [query: dd]
+			}
+			SimpleSearch [query: ee]
+		}

@@ -1,0 +1,127 @@
+grammar org.uniovi.miw.jgen.JGen with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate jGen "http://www.uniovi.org/miw/jgen/JGen"
+
+Model:
+ 	'SELECT' queries+=Query (',' queries+=Query)*
+ 	('SEARCH' 'BY' ((searchMode=SearchMode)? & (searchLang=SearchLang)? & (searchLocation=SearchLocation)? & (searchDate=SearchDate)?))?
+	('REPEAT' 'EVERY' repeatOptions=RepeatOptions)?
+	('FROM' platforms+=Platform (',' platforms+=Platform)*)?
+	('LIMIT' limit=SearchLimit)?
+	('DELAY' delay=SearchDelay)?
+;
+ 
+// SELECT TERMS
+Query returns Query: 
+	{SimpleQuery} queryExpression=QueryExpressionOrAll |
+	{BioQuery} "USER" queryExpression=QueryExpression |
+	{PostQuery} "POST" queryExpression=QueryExpressionOrAll |
+	{CommentsQuery} "COMMENTS" "OF" postId=STRING ("WITH" queryExpression=QueryExpression)? |
+	{ResponseQuery} "COMMENTS" "TO" userId=STRING ("WITH" queryExpression=QueryExpression)?
+;
+
+QueryExpressionOrAll returns QueryExpression:
+	{AllSearch} "*" |
+	QueryExpression 
+;
+ 
+QueryExpression:
+	OrExpression
+;
+
+OrExpression returns QueryExpression:
+	AndExpression (
+		{OrExpression.left=current} "OR" right=AndExpression
+	)*
+;
+
+AndExpression returns QueryExpression:
+	PrimaryExpression (
+		{AndExpression.left=current} "AND" right=PrimaryExpression
+	)*
+;
+
+PrimaryExpression returns QueryExpression:
+	'(' QueryExpression ')' |
+	{NotExpression} "NOT" expression=PrimaryExpression |
+	SearchItem
+;
+
+SearchItem returns QueryExpression:
+	{SimpleSearch}  query=STRING  |
+	{KeywordSearch} query=KEYWORD |
+	{ExactlySearch} query=EXACTLY |
+	{UserSearch}    query=USER
+;
+
+// SCHEDULE TERMS
+
+SearchMode:
+	'MODE' mode=ID
+;
+
+SearchLang:
+	'LANGUAGE' lang=ID
+;
+
+SearchLocation:
+	'LOCATION' '(' lat=DOUBLE ',' lon=DOUBLE (')' | (',' area=SearchArea ')' ))
+;
+
+SearchArea:
+	{SearchArea} radius=INT
+;
+
+SearchDate:
+	"DATES" "FROM" from=STRING ("TO" to=STRING)?
+;
+
+RepeatOptions:
+	every=INT ('UNTIL' until=NullableINT)?
+;
+
+NullableINT:
+	value=INT
+;
+
+// SEARCH RESTRICTIONS
+
+Platform: 
+	platform=ID | platform='*'
+;
+
+SearchLimit:
+	limit=INT
+;
+
+SearchDelay:
+	delay=INT
+;
+
+// TERMINALS
+
+terminal EXACTLY:
+	'""' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )+ '""' |
+	"''" ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|"'") )+ "''"
+;
+
+terminal KEYWORD:
+	'#' (!(' '|'\t'|'\r'|'\n'|'\b'|"\f"|"'"|'"'|","))+ |
+	'#' '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )+ '"' |
+	'#' "'" ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|"'") )+ "'"
+;
+
+terminal USER:
+	'@' (!(' '|'\t'|'\r'|'\n'|'\b'|"\f"|"'"|'"'|","))+ |
+	'@' '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )+ '"' |
+	'@' "'" ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|"'") )+ "'"
+;
+
+// DATATYPE RULES
+
+DOUBLE returns ecore::EDouble : 
+	('-')?INT'.'INT | ('-')?INT
+;
+

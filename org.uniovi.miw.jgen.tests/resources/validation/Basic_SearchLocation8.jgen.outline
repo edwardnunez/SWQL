@@ -1,0 +1,4 @@
+Model [queries: 1]
+	#0 PostQuery
+		SimpleSearch [query: house]
+	SearchLocation[location: (45.3324,45.324121,0)]

@@ -1,0 +1,33 @@
+{
+  "queryNumber": 3,
+  "queries": [
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "USER",
+        "isLogical": false,
+        "text": "house"
+      }
+    },
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "USER",
+        "isLogical": false,
+        "text": "car aa"
+      }
+    },
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "USER",
+        "isLogical": false,
+        "text": "jose aa"
+      }
+    }
+  ],
+  "platforms": [
+    "twitter",
+    "facebook"
+  ]
+}

@@ -1,0 +1,7 @@
+Model [queries: 3]
+	#0 SimpleQuery
+		UserSearch [query: house]
+	#1 SimpleQuery
+		UserSearch [query: car aa]
+	#2 SimpleQuery
+		UserSearch [query: jose aa]

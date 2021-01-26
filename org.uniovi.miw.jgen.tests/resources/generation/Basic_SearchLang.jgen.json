@@ -1,0 +1,18 @@
+{
+  "queryNumber": 1,
+  "queries": [
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "SIMPLE",
+        "isLogical": false,
+        "text": "house"
+      }
+    }
+  ],
+  "platforms": [
+    "twitter",
+    "facebook"
+  ],
+  "lang": "ES"
+}

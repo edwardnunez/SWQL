@@ -1,0 +1,7 @@
+Model [queries: 1]
+	#0 SimpleQuery
+		And
+		{
+			KeywordSearch [query: house]
+			KeywordSearch [query: gate]
+		}

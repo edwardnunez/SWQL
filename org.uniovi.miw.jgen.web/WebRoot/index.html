@@ -1,0 +1,100 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Language" content="en-us">
+	<title>Example Web Editor</title>
+	<link rel="stylesheet" type="text/css" href="xtext/2.16.0/xtext-ace.css"/>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<script src="webjars/requirejs/2.3.2/require.min.js"></script>
+	<script type="text/javascript">
+		var editor = null;
+		var baseUrl = window.location.pathname;
+		var fileIndex = baseUrl.indexOf("index.html");
+		if (fileIndex > 0)
+			baseUrl = baseUrl.slice(0, fileIndex);
+		require.config({
+			baseUrl: baseUrl,
+			paths: {
+				"jquery": "webjars/jquery/2.2.4/jquery.min",
+				"ace/ext/language_tools": "webjars/ace/1.2.3/src/ext-language_tools",
+				"xtext/xtext-ace": "xtext/2.16.0/xtext-ace"
+			}
+		});
+		require(["webjars/ace/1.2.3/src/ace"], function() {
+			require(["xtext/xtext-ace"], function(xtext) {
+				editor = xtext.createEditor({
+					baseUrl: baseUrl,
+					syntaxDefinition: "xtext-resources/generated/mode-jgen"
+				});
+				jQuery('#generate-button').bind("click", function(e){					
+					var fullText = editor.xtextServices.editorContext.getText();
+					console.log(fullText);
+					var data = {
+						fullText : fullText,
+						resource: "query.jgen"
+					};
+					console.log('http://' + location.host + '/xtext-service/generate-all')	
+					jQuery.post('http://' + location.host + '/xtext-service/generate-all', data, function(result){
+						if(result.artifacts) {
+							jQuery("#compile-res").val(result.artifacts[0].content);
+							console.log(result);
+						} else {
+							jQuery("#compile-res").val(result.issues.map(x => x.description).join(','));
+							console.log(result);
+						}
+					}).fail(function(response) {
+    					console.log(response);
+					});
+					e.preventDefault();
+				});
+				
+				jQuery(window).bind('keydown', function(event) {
+				    if (event.ctrlKey || event.metaKey) {
+				        switch (String.fromCharCode(event.which).toLowerCase()) {
+				        case 's':
+				            event.preventDefault();
+				            var fullText = editor.xtextServices.editorContext.getText();
+							console.log(fullText);
+							var data = {
+								fullText : fullText,
+								resource: "query.jgen"
+							};
+							console.log('http://' + location.host + '/xtext-service/generate-all')	
+							jQuery.post('http://' + location.host + '/xtext-service/generate-all', data, function(result){
+								console.log(result);
+								jQuery("#compile-res").val(result.artifacts[0].content);
+							}).fail(function(response) {
+		    					console.log(response);
+							});
+				            break;
+				         }
+				    }
+				});
+				
+				jQuery('#load-example').bind("click", function(e){
+					editor.setValue("SELECT 'car', USER #natur, POST 'car'\nSEARCH BY MODE POPULAR LANGUAGE ES LOCATION(-45,-45,30) DATES FROM '2017-05-05' TO '2017-05-10'\nREPEAT EVERY 60 UNTIL 10\nFROM TWITTER LIMIT 100 DELAY 20", -1)
+					e.preventDefault();
+				});
+
+			});
+			
+		});
+	</script>
+</head>
+<body>
+
+<div class="container">
+	<div class="header">
+		<h1>Example JGen Web Editor</h1>
+	</div>
+	<div class="content">
+		<div id="xtext-editor" data-editor-xtext-lang="jgen"></div>
+	</div>
+	<div class="button-wrapper">
+		<button id="load-example" value="Cargar Ejemplo" title="Cargar Ejemplo">Cargar Ejemplo</button>
+		<button id="generate-button" value="Generate" title="Generate">Generate (Ctrl+S)</button>
+		<textarea id="compile-res" style="dispaly:block; width:100%; height:90%;"></textarea>
+	</div>
+</div>
+</body>
+</html>

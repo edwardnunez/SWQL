@@ -1,0 +1,16 @@
+{
+  "queryNumber": 1,
+  "queries": [
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "ALL",
+        "isLogical": false
+      }
+    }
+  ],
+  "platforms": [
+    "twitter",
+    "facebook"
+  ]
+}

@@ -1,0 +1,5 @@
+Model [queries: 1]
+	#0 PostQuery
+		SimpleSearch [query: house]
+	Platforms
+		*

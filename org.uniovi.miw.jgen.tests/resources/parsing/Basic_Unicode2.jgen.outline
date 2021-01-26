@@ -1,0 +1,6 @@
+Model [queries: 2]
+	#0 SimpleQuery
+		SimpleSearch [query: 中华人民共和国]
+	#1 SimpleQuery
+		SimpleSearch [query: 国	
+]

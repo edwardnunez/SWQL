@@ -1,0 +1,10 @@
+dependencies {
+	compile project(':org.uniovi.miw.jgen')
+	compile "org.eclipse.xtext:org.eclipse.xtext.ide:${xtextVersion}"
+	compile "org.eclipse.xtext:org.eclipse.xtext.xbase.ide:${xtextVersion}"
+	compile group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
+	compile group: 'joda-time', name: 'joda-time', version: '2.10'
+}
+//this is an eclipse plugin project
+eclipseClasspath.enabled=false
+cleanEclipseClasspath.enabled=false

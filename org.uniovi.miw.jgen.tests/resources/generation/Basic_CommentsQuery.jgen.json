@@ -1,0 +1,18 @@
+{
+  "queryNumber": 1,
+  "queries": [
+    {
+      "type": "CommentsQuery",
+      "id": "0001",
+      "expression": {
+        "type": "SIMPLE",
+        "isLogical": false,
+        "text": "HOUSE"
+      }
+    }
+  ],
+  "platforms": [
+    "twitter",
+    "facebook"
+  ]
+}

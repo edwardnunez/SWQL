@@ -1,0 +1,1 @@
+SELECT "aa" AND ("bb" OR "cc") AND ("dd"), "ee"

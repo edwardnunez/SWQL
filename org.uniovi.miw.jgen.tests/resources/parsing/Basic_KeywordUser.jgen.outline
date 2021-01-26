@@ -1,0 +1,5 @@
+Model [queries: 2]
+	#0 SimpleQuery
+		KeywordSearch [query: house]
+	#1 SimpleQuery
+		UserSearch [query: user]

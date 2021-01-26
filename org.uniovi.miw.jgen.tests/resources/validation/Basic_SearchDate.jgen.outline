@@ -1,0 +1,4 @@
+Model [queries: 1]
+	#0 PostQuery
+		SimpleSearch [query: house]
+	SearchDate[from: 2017-05-05, to: 2017-05-10]

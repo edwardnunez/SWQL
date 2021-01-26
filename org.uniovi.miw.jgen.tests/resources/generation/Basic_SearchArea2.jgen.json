@@ -1,0 +1,22 @@
+{
+  "queryNumber": 1,
+  "queries": [
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "SIMPLE",
+        "isLogical": false,
+        "text": "house"
+      }
+    }
+  ],
+  "platforms": [
+    "twitter",
+    "facebook"
+  ],
+  "location": {
+    "lat": 0.0,
+    "lon": 0.0,
+    "radius": 1
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "queryNumber": 2,
+  "queries": [
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "OR",
+        "isLogical": true,
+        "first": {
+          "type": "AND",
+          "isLogical": true,
+          "first": {
+            "type": "KEYWORD",
+            "isLogical": false,
+            "text": "house"
+          },
+          "second": {
+            "type": "USER",
+            "isLogical": false,
+            "text": "user"
+          }
+        },
+        "second": {
+          "type": "USER",
+          "isLogical": false,
+          "text": "door"
+        }
+      }
+    },
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "USER",
+        "isLogical": false,
+        "text": "light"
+      }
+    }
+  ],
+  "platforms": [
+    "twitter",
+    "facebook"
+  ]
+}

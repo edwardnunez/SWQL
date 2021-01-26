@@ -1,0 +1,13 @@
+Model [queries: 2]
+	#0 SimpleQuery
+		Or
+		{
+			And
+			{
+				KeywordSearch [query: house]
+				UserSearch [query: user]
+			}
+			UserSearch [query: door]
+		}
+	#1 SimpleQuery
+		UserSearch [query: light]

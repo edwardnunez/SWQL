@@ -1,0 +1,4 @@
+include 'org.uniovi.miw.jgen'
+include 'org.uniovi.miw.jgen.ide'
+include 'org.uniovi.miw.jgen.web'
+include 'org.uniovi.miw.jgen.tests'

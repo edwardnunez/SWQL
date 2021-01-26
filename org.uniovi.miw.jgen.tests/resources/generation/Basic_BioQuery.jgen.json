@@ -1,0 +1,17 @@
+{
+  "queryNumber": 1,
+  "queries": [
+    {
+      "type": "UserQuery",
+      "expression": {
+        "type": "SIMPLE",
+        "isLogical": false,
+        "text": "house"
+      }
+    }
+  ],
+  "platforms": [
+    "twitter",
+    "facebook"
+  ]
+}

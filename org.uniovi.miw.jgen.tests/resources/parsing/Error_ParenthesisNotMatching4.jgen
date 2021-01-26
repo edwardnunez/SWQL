@@ -1,0 +1,2 @@
+SELECT ("aa" AND ("bb" OR "cc")
+

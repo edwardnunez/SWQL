@@ -1,0 +1,2 @@
+SELECT (POST "aa" AND "bb" OR "cc"), "aa"
+

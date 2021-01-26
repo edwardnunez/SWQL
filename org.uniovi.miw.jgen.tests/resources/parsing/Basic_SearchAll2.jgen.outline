@@ -1,0 +1,8 @@
+Model [queries: 4]
+	#0 PostQuery
+		AllSearch
+	#1 SimpleQuery
+		AllSearch
+	#2 BioQuery
+		SimpleSearch [query: jose]
+	#3 CommentsQuery [postId: 0001]

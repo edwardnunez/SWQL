@@ -1,0 +1,44 @@
+{
+  "queryNumber": 1,
+  "queries": [
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "AND",
+        "isLogical": true,
+        "first": {
+          "type": "AND",
+          "isLogical": true,
+          "first": {
+            "type": "SIMPLE",
+            "isLogical": false,
+            "text": "aa"
+          },
+          "second": {
+            "type": "OR",
+            "isLogical": true,
+            "first": {
+              "type": "SIMPLE",
+              "isLogical": false,
+              "text": "bb"
+            },
+            "second": {
+              "type": "SIMPLE",
+              "isLogical": false,
+              "text": "cc"
+            }
+          }
+        },
+        "second": {
+          "type": "SIMPLE",
+          "isLogical": false,
+          "text": "dd"
+        }
+      }
+    }
+  ],
+  "platforms": [
+    "twitter",
+    "facebook"
+  ]
+}

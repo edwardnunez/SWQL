@@ -1,0 +1,7 @@
+Model [queries: 3]
+	#0 SimpleQuery
+		KeywordSearch [query: house]
+	#1 SimpleQuery
+		KeywordSearch [query: door jj]
+	#2 SimpleQuery
+		KeywordSearch [query: fire man]

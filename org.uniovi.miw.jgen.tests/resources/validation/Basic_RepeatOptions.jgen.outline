@@ -1,0 +1,6 @@
+Model [queries: 1]
+	#0 PostQuery
+		SimpleSearch [query: house]
+	RepeatOptions[every: 20, to: 20]
+	Platforms
+		TWITTER

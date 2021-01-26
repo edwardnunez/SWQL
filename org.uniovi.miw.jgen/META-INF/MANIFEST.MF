@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.uniovi.miw.jgen
+Bundle-ManifestVersion: 2
+Bundle-Name: org.uniovi.miw.jgen
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.uniovi.miw.jgen; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.eclipse.xtend.lib;bundle-version="2.14.0",
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.uniovi.miw.jgen.services,
+ org.uniovi.miw.jgen.parser.antlr,
+ org.uniovi.miw.jgen.parser.antlr.internal,
+ org.uniovi.miw.jgen,
+ org.uniovi.miw.jgen.jGen.impl,
+ org.uniovi.miw.jgen.validation,
+ org.uniovi.miw.jgen.scoping,
+ org.uniovi.miw.jgen.serializer,
+ org.uniovi.miw.jgen.jGen,
+ org.uniovi.miw.jgen.jGen.util,
+ org.uniovi.miw.jgen.generator
+Import-Package: org.apache.log4j
+Bundle-ClassPath: lib/joda-time-2.10.jar,
+ .,
+ lib/gson-2.8.5.jar

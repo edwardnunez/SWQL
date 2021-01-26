@@ -1,0 +1,33 @@
+{
+  "queryNumber": 3,
+  "queries": [
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "KEYWORD",
+        "isLogical": false,
+        "text": "house"
+      }
+    },
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "KEYWORD",
+        "isLogical": false,
+        "text": "door jj"
+      }
+    },
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "KEYWORD",
+        "isLogical": false,
+        "text": "fire man"
+      }
+    }
+  ],
+  "platforms": [
+    "twitter",
+    "facebook"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "queryNumber": 1,
+  "queries": [
+    {
+      "type": "PostQuery",
+      "expression": {
+        "type": "AND",
+        "isLogical": true,
+        "first": {
+          "type": "KEYWORD",
+          "isLogical": false,
+          "text": "house"
+        },
+        "second": {
+          "type": "KEYWORD",
+          "isLogical": false,
+          "text": "gate"
+        }
+      }
+    }
+  ],
+  "platforms": [
+    "twitter",
+    "facebook"
+  ]
+}

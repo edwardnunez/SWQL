@@ -1,0 +1,3 @@
+Model [queries: 1]
+	#0 SimpleQuery
+		UserSearch [query: house]
